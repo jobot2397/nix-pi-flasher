@@ -25,14 +25,21 @@ nixos-unstable is required for Pi 5 firmware. The stable `sd-image-aarch64.nix` 
 - Nix, with the `nix` binary on `PATH`. The app passes `--extra-experimental-features nix-command flakes`, so flakes do not have to be enabled in `nix.conf`.
 - An aarch64-linux builder, or binfmt/qemu registered for aarch64. The image is built for `aarch64-linux` even when the app itself runs on x86_64.
 - Linux, for listing disks and flashing (`lsblk`, `dd`, and `pkexec` when the app is not root).
-- For `npm run tauri dev`: Node, npm, Rust, and the [Tauri Linux dependencies](https://tauri.app/start/prerequisites/) (WebKitGTK 4.1).
+- For `npm run tauri dev`: Node, npm, Rust, and the [Tauri Linux dependencies](https://tauri.app/start/prerequisites/) (WebKitGTK 4.1). `mise.toml` installs Node 22 and stable Rust. Nix is not installed by mise.
 
 ## Develop
 
+Install [mise](https://mise.jdx.dev/), then from the repo root:
+
 ```sh
+mise install
 npm install
 npm run tauri dev
 ```
+
+If mise asks whether to trust this config, trust it. `mise run dev` is the same as `npm run tauri dev`.
+
+On macOS, the Xcode command-line tools are still required for the linker (`xcode-select --install`). Flashing stays Linux-only.
 
 `npm run build` typechecks the UI and produces the Vite bundle. Rust tests live in `src-tauri`:
 

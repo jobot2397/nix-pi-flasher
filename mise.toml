@@ -1,0 +1,7 @@
+[tools]
+node = "22"
+rust = "stable"
+
+[tasks.dev]
+description = "Run the Tauri app in development"
+run = "npm run tauri dev"
