@@ -1,0 +1,9 @@
+{
+  "setHostname": true,
+  "hostname": "nixpi",
+  "enableSsh": true,
+  "createUser": false,
+  "username": "nixos",
+  "hashedPassword": null,
+  "packages": []
+}
